@@ -5,8 +5,7 @@
 var express = require('express')
   , http = require('http')
   , path = require('path')
-  , MongoClient = require('mongodb').MongoClient
-  , wiki = require('./routes/wiki')
+  , mongo = require('mongodb')
   , format = require('util').format;
 
 var app = express();
@@ -27,13 +26,11 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/wikis', wiki.findAll);
-app.get('/wiki/:id', wiki.findById);
-app.get('/wiki/:title', wiki.findByTitle);
-app.post('/wiki', wiki.addWiki);
-app.put('/wiki/:id', wiki.updateWiki);
-app.delete('/wiki/:id', wiki.deleteWiki);
-
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+var server = new mongo.Server("localhost", 27017, {auto_reconnect: true});
+var dbManager = new mongo.Db("inf4375_labo12", server, {safe:true});
+dbManager.open(function(err, db) {
+  require('./routes/wiki')(app, db);
+  app.listen(app.get('port'), function(){
+    console.log('Express server listening on port ' + app.get('port'));
+  });
 });

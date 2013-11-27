@@ -1,0 +1,35 @@
+!!!
+html
+  head
+    title Labo 12
+    meta(charset="utf-8")
+    link(rel="stylesheet", href="/stylesheets/style.css")
+    script(src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js", type="text/javascript")
+    script(src="/javascripts/app.js", type="text/javascript")
+  body
+    h1 API test
+    div#result
+    form#get_all
+        h2 Récupérer les wikis
+        input(type='submit')
+    hr
+
+    form#get_id
+        h2 Recherche par id
+        input#id
+        input(type='submit')
+    hr
+
+    form#get_title
+        h2 Recherche par titre
+        input#title
+        input(type='submit')
+
+    hr
+
+    form#new
+        h2 Nouveau wiki
+        p données jsons:
+        p
+            textarea#new_wiki
+        input(type='submit')
