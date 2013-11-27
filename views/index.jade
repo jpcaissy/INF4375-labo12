@@ -33,3 +33,22 @@ html
         p
             textarea#new_wiki
         input(type='submit')
+
+    hr
+
+    form#edit
+        h2 Modifier un wiki
+        p ID à modifier :
+        p
+            input#edit_id
+        p Données à remplacer
+        p
+            textarea#edit_wiki
+        input(type='submit')
+
+    form#delete
+        h2 Supprime run wiki
+        p ID du wiki à supprimer
+        p
+            input#rm_id
+        input(type='submit')

@@ -23,4 +23,30 @@ $(document).ready(function() {
             $("#result").text(JSON.stringify(data));
         });
     });
+    $("#edit").submit(function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            type: "PUT",
+            url: "/api/wiki/" + $("#edit_id").val(),
+            dataType: "json",
+            data: $("#edit_wiki").val(),
+            success: function (data) {
+                $("#result").text(JSON.stringify(data));
+            }
+        });
+    });
+    $("#delete").submit(function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            type: "DELETE",
+            url: "/api/wiki/" + $("#rm_id").val(),
+            dataType: "json",
+            success: function (data) {
+                $("#result").text(JSON.stringify(data));
+            }
+        });
+    });
+
 });
