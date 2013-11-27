@@ -30,7 +30,7 @@ $(document).ready(function() {
             type: "PUT",
             url: "/api/wiki/" + $("#edit_id").val(),
             dataType: "json",
-            data: $("#edit_wiki").val(),
+            data: JSON.parse($("#edit_wiki").val()),
             success: function (data) {
                 $("#result").text(JSON.stringify(data));
             }
