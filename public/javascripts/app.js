@@ -19,7 +19,7 @@ $(document).ready(function() {
     });
     $("#new").submit(function(e){
         e.preventDefault();
-        $.post('/api/wiki/', $("new_wiki").val(), function(data) {
+        $.post('/api/wiki/', $("#new_wiki").val(), function(data) {
             $("#result").text(JSON.stringify(data));
         });
     });
