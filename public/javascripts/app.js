@@ -19,9 +19,9 @@ $(document).ready(function() {
     });
     $("#new").submit(function(e){
         e.preventDefault();
-        $.post('/api/wiki/', $("#new_wiki").val(), function(data) {
+        $.post('/api/wiki/', JSON.parse($("#new_wiki").val()), function(data) {
             $("#result").text(JSON.stringify(data));
-        });
+        }, "json");
     });
     $("#edit").submit(function(e) {
         e.preventDefault();
